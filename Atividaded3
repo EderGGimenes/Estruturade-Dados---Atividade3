@@ -1,0 +1,57 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
+
+public class Atividade3 {
+    public static void main(String[] args) {
+
+// Passo 1 Insere a lista
+        List<Integer> lista = new ArrayList<>(5);
+        for ( int i=1; i < 6 ; i++) lista.add(i);
+        System.out.println("Números inseridos na lista " + lista);
+
+
+// Passo 2 - insere na pilha e remove da lista
+        Stack<Integer> pilha = new Stack<>();
+        while (!lista.isEmpty()) {
+            pilha.push(lista.remove(0)); //Aqui insere na pilha com base na lista e já remove do primeiro elemento da lista
+        }
+        System.out.println("Números inseridos na pilha um por um " + pilha);
+
+// Passo 3 - insere na fila e remove da pilha
+        Queue<Integer> fila = new LinkedList<>();
+        while (!pilha.isEmpty()) {
+            fila.add(pilha.pop());//Aqui insere na pilha com base na lista e já remove da pilha
+        }
+        System.out.println("Números inseridos na fila " + fila);
+
+// Passo 4 - adiciona os outros elementos de 6 a 10
+        for ( int i=6; i < 11 ; i++) lista.add(i);
+        System.out.println("Números inseridos na lista " + lista);
+
+// Volta nos passos 2 e 3 e finaliza com a fila
+        while (!lista.isEmpty()) {
+            pilha.push(lista.remove(0));
+        }
+        System.out.println("Números inseridos na pilha " + pilha);
+
+        while (!pilha.isEmpty()) {
+            fila.add(pilha.pop());
+        }
+        System.out.println("Números inseridos na fila " + fila);
+
+    }
+}
+
+Resutado do código acima:
+
+Números inseridos na lista [1, 2, 3, 4, 5]
+Números inseridos na pilha um por um [1, 2, 3, 4, 5]
+Números inseridos na fila [5, 4, 3, 2, 1]
+Números inseridos na lista [6, 7, 8, 9, 10]
+Números inseridos na pilha [6, 7, 8, 9, 10]
+Números inseridos na fila [5, 4, 3, 2, 1, 10, 9, 8, 7, 6]
+
+Process finished with exit code 0
